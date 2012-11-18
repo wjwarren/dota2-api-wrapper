@@ -61,4 +61,9 @@ public abstract class SteamRequest implements ISteamRequest {
 		return parameters;
 	}
 	
+	@Override
+	public String createRequestUrl(int applicationId, Map<String, String> params) {
+		return serializeURL(getBaseUrl(applicationId), params);
+	}
+	
 }

@@ -1,5 +1,7 @@
 package nl.ansuz.android.steam.dota.request;
 
+import java.util.Map;
+
 import nl.ansuz.android.steam.request.ISteamRequest;
 import nl.ansuz.android.steam.request.SteamRequest;
 
@@ -21,7 +23,7 @@ public abstract class DotaRequest extends SteamRequest implements ISteamRequest 
 		public final static int LIVE = 570;
 	}
 	
-	protected final static String INTERFACE_PREFIX = "IDOTA2Match_";
+	private final static String INTERFACE_PREFIX = "IDOTA2Match_";
 	
 	/**
 	 * Builds the full interface name.
@@ -38,6 +40,11 @@ public abstract class DotaRequest extends SteamRequest implements ISteamRequest 
 		baseUrl += "/" + getInterface(appId);
 		
 		return baseUrl;
+	}
+	
+	@Override
+	public String createRequestUrl(int applicationId, Map<String, String> params) {
+		return serializeURL(getBaseUrl(applicationId), params);
 	}
 	
 }

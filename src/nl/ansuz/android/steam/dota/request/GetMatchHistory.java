@@ -1,7 +1,5 @@
 package nl.ansuz.android.steam.dota.request;
 
-import java.util.Map;
-
 import nl.ansuz.android.steam.request.ISteamRequest;
 
 /**
@@ -73,11 +71,6 @@ public class GetMatchHistory extends DotaRequest implements ISteamRequest {
 		baseUrl += "/";
 		
 		return baseUrl;
-	}
-
-	@Override
-	public String createRequestUrl(int applicationId, Map<String, String> params) {
-		return serializeURL(getBaseUrl(applicationId), params);
 	}
 	
 }
