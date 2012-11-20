@@ -1,6 +1,6 @@
 package nl.ansuz.android.steam.dota.response;
 
-import nl.ansuz.android.steam.dota.vo.DotaPlayer;
+import nl.ansuz.android.steam.dota.vo.PlayerVO;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -40,7 +40,7 @@ public class GetMatchDetailsResponse {
 	 * The list of players that participated in this match.
 	 */
 	@SerializedName("players")
-	public DotaPlayer[] players;
+	public PlayerVO[] players;
 	
 	/**
 	 * ???

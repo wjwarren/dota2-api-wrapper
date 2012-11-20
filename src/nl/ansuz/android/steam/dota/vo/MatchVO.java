@@ -19,5 +19,5 @@ public class MatchVO {
 	public int lobbyType;
 	
 	@SerializedName("players")
-	public DotaPlayer[] players;
+	public PlayerVO[] players;
 }

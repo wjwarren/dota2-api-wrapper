@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
  * 
  * @author Wijnand
  */
-public class DotaPlayer {
+public class PlayerVO {
 
 	/**
 	 * 32 bit Steam account number.
