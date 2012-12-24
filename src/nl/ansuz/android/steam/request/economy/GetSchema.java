@@ -22,7 +22,7 @@ public class GetSchema extends EconomyRequest implements ISteamRequest {
 	protected String getBaseUrl(int appId) {
 		String baseUrl = super.getBaseUrl(appId);
 		baseUrl += "/" + METHOD_NAME;
-		baseUrl += "/" + API_VERSION;
+		baseUrl += "/" + API_VERSION_ONE;
 		baseUrl += "/";
 		
 		return baseUrl;

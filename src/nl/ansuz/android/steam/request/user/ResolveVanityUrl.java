@@ -3,8 +3,8 @@ package nl.ansuz.android.steam.request.user;
 import nl.ansuz.android.steam.request.ISteamRequest;
 
 /**
- * Helps constructing the url to retreive a player's details based on the vanity
- * URL.
+ * Helps constructing the URL to retrieve a player's Steam id based on the 
+ * vanity URL.
  * 
  * @see http://wiki.teamfortress.com/wiki/WebAPI/ResolveVanityURL
  * @author Wijnand
@@ -28,7 +28,7 @@ public class ResolveVanityUrl extends UserRequest implements ISteamRequest {
 	protected String getBaseUrl(int appId) {
 		String baseUrl = super.getBaseUrl(appId);
 		baseUrl += "/" + METHOD_NAME;
-		baseUrl += "/" + API_VERSION;
+		baseUrl += "/" + API_VERSION_ONE;
 		baseUrl += "/";
 		
 		return baseUrl;

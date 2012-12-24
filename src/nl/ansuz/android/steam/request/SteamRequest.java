@@ -10,7 +10,8 @@ import java.util.Map;
 public abstract class SteamRequest implements ISteamRequest {
 
 	public final static String API_BASE_PATH = "https://api.steampowered.com";
-	public final static String API_VERSION = "v1";
+	public final static String API_VERSION_ONE = "v1";
+	public final static String API_VERSION_TWO = "v2";
 	
 	/**
 	 * Simple listing of available request parameters.
