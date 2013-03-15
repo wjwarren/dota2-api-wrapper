@@ -29,6 +29,8 @@ repositories {
 
 dependencies {
 	// Libs:
-	compile group: "com.google.android", name: "android", version: "4.1.1.4"
+	// Android API lvl 8
+	compile group: "com.google.android", name: "android", version: "2.2.1"
+	// GSON
 	compile group: "com.google.code.gson", name: "gson", version: "2.2.2"
 }
