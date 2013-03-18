@@ -34,7 +34,7 @@ public class SteamId {
 	 * 
 	 * @author Wijnand
 	 */
-	public enum Type {
+	public enum AccountType {
 		INVALID,
 		INDIVIDUAL,
 		MULTISEAT,
@@ -47,23 +47,23 @@ public class SteamId {
 		P2P_SUPER_SEEDER,
 		ANONUSER;
 		
-		private static final Type[] typeValues = Type.values();
+		private static final AccountType[] typeValues = AccountType.values();
 		
-		public static Type fromInteger(int i) {
+		public static AccountType fromInteger(int i) {
 			return typeValues[i];
 		}
 	}
 	
-	private final static String TEXTUAL_PREFIX = "STEAM_";
-	private final static String TEXTUAL_SEPARATOR = ":";
-	private final static long ACCOUNT_TO_ID_OFFSET = 76561197960265728L;
+	public final static String TEXTUAL_PREFIX = "STEAM_";
+	public final static String TEXTUAL_SEPARATOR = ":";
+	public final static long ACCOUNT_TO_ID_OFFSET = 76561197960265728L;
 		
 	private String textualId;
 	private long id64Bits;
 	
 	private int accountNumber;
 	private int accountInstance;
-	private Type accountType;
+	private AccountType accountType;
 	private Universe accountUniverse;
 	
 	/**
@@ -87,7 +87,7 @@ public class SteamId {
 		
 		// Assumptions:
 		accountInstance = 1;
-		accountType = Type.INDIVIDUAL;
+		accountType = AccountType.INDIVIDUAL;
 	}
 	
 	/**
@@ -109,7 +109,7 @@ public class SteamId {
 		
 		accountNumber = (int) (id64Bits & 0xffffffff);
 		accountInstance = (int) ((id64Bits >> 32) & 0xfffff);
-		accountType = Type.fromInteger((int) ((id64Bits >> 52) & 0xf));
+		accountType = AccountType.fromInteger((int) ((id64Bits >> 52) & 0xf));
 		accountUniverse = Universe.fromInteger((int) (id64Bits >> 56));
 		
 		textualId = createTextualId();
@@ -129,7 +129,7 @@ public class SteamId {
 		
 		// Using assumed instance, type and universe.
 		accountInstance = 1;
-		accountType = Type.INDIVIDUAL;
+		accountType = AccountType.INDIVIDUAL;
 		accountUniverse = Universe.PUBLIC;
 		
 		textualId = createTextualId();
@@ -207,7 +207,7 @@ public class SteamId {
 	/**
 	 * @return the accountType
 	 */
-	public Type getAccountType() {
+	public AccountType getAccountType() {
 		return accountType;
 	}
 
