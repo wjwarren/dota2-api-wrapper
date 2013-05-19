@@ -150,5 +150,12 @@ public class PlayerVO {
 	 */
 	@SerializedName("level")
 	public int level;
+	
+	/**
+	 * @return Whether or not the player was in the Radiant team.
+	 */
+	public boolean isRadiant() {
+		return playerSlot < 5;
+	}
 
 }

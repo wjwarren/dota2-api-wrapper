@@ -40,7 +40,7 @@ public class GetMatchHistory extends DotaRequest implements ISteamRequest {
 		public final static String DATE_MAX = "date_max";
 		
 		/**
-		 * Steam account id (this is not SteamID, its only the account number portion).
+		 * Steam account id (this is not SteamID, it's only the account number portion).
 		 */
 		public final static String ACCOUNT_ID = "account_id";
 		
@@ -61,7 +61,7 @@ public class GetMatchHistory extends DotaRequest implements ISteamRequest {
 
 	}
 	
-	private final static String METHOD_NAME = "GetMatchHistory";
+	public final static String METHOD_NAME = "GetMatchHistory";
 	
 	@Override
 	protected String getBaseUrl(int appId) {

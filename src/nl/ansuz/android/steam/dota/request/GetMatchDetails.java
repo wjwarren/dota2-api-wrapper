@@ -21,7 +21,7 @@ public class GetMatchDetails extends DotaRequest implements ISteamRequest {
 	
 	}
 	
-	private final static String METHOD_NAME = "GetMatchDetails";
+	public final static String METHOD_NAME = "GetMatchDetails";
 	
 	@Override
 	protected String getBaseUrl(int appId) {

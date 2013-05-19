@@ -21,7 +21,7 @@ public class GetPlayerSummaries extends UserRequest implements ISteamRequest {
 		public final static String STEAM_IDS = "steamids";
 	}
 	
-	private final static String METHOD_NAME = "GetPlayerSummaries";
+	public final static String METHOD_NAME = "GetPlayerSummaries";
 	
 	@Override
 	protected String getBaseUrl(int appId) {

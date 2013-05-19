@@ -17,25 +17,29 @@ public class ResolveVanityUrlResponse {
 	private int success;
 	
 	/**
-	 * (Optional) The 64 bit Steam ID the vanity URL resolves to. Not returned 
-	 * on resolution failures.
+	 * (Optional) The 64 bit Steam ID the vanity URL resolves to. Not returned on resolution failures.
 	 */
 	@SerializedName("steamid")
 	public String steamId;
 	
 	/**
-	 * (Optional) The message associated with the request status. Currently only
-	 * used on resolution failures.
+	 * (Optional) The message associated with the request status. Currently only used on resolution failures.
 	 */
 	@SerializedName("message")
 	public String message;
 	
 	/**
-	 * @return Whether or not the vanity URL was successfully resolved to a user
-	 * 	id.
+	 * @return Whether or not the vanity URL was successfully resolved to a user id.
 	 */
 	public boolean isSucces() {
 		return success == 1;
+	}
+	
+	/**
+	 * @return The 64 bit Steam ID parsed as a Long.
+	 */
+	public Long getSteamIdAsLong() {
+		return Long.parseLong(steamId);
 	}
 	
 }
