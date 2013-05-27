@@ -1,7 +1,16 @@
+# Gradle
 .gradle/
+build/
+
+# Eclipse
+.classpath
+.project
+.pydevproject
 .settings/
 bin/
-build/
 gen/
 libs/
+project.properties
+
+# Misc
 tools/itemparser/items.txt
