@@ -33,7 +33,21 @@ public class GetMatchDetailsResponse {
 	 * @author Wijnand
 	 */
 	public enum GameMode {
+		UNKNOWN,
+		ALL_PICK,
+		SINGLE_DRAFT,
+		CAPTAINS_MODE,
+		RANDOM_DRAFT,
+		ALL_RANDOM,
+		REVERSE_DRAFT,
+		WTF_MODE,
+		DIRE_TIDE;
 		
+		private static final GameMode[] typeValues = GameMode.values();
+
+		public static GameMode fromInteger(int i) {
+			return typeValues[i];
+		}
 	}
 	
 	/**
@@ -154,11 +168,11 @@ public class GetMatchDetailsResponse {
 	
 	/**
 	 * The type of game that was played:
-	 *  - All pick
+	 *  - All pick (1)
 	 *  - Single draft
 	 *  - Captain's Mode
 	 *  - Random Draft
-	 *  - All Random
+	 *  - All Random (5)
 	 *  - Reverse Draft
 	 *  - WTF Mode
 	 *  (- Dire Tide?)
