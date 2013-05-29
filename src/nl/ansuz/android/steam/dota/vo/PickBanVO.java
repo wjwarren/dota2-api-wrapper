@@ -16,7 +16,15 @@ public class PickBanVO {
 	 */
 	public enum Team {
 		RADIANT,
-		DIRE;
+		DIRE,
+		BROADCASTER,
+		UNASSIGNED;
+		
+		private static final Team[] teamValues = Team.values();
+		
+		public static Team fromInteger(int i) {
+			return teamValues[i];
+		}
 	}
 	
 	/**

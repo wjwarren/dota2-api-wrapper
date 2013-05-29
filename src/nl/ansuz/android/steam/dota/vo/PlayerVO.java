@@ -1,5 +1,7 @@
 package nl.ansuz.android.steam.dota.vo;
 
+import nl.ansuz.android.steam.dota.vo.players.BasePlayerVO;
+
 import com.google.gson.annotations.SerializedName;
 
 /**
@@ -7,14 +9,8 @@ import com.google.gson.annotations.SerializedName;
  * 
  * @author Wijnand
  */
-public class PlayerVO {
+public class PlayerVO extends BasePlayerVO {
 
-	/**
-	 * 32 bit Steam account number.
-	 */
-	@SerializedName("account_id")
-	public int accountId;
-	
 	/**
 	 * An 8-bit unsigned int: if the left-most bit is set, the player was on dire. 
 	 * The two right-most bits represent the player slot (0-4).
@@ -24,12 +20,6 @@ public class PlayerVO {
 	 */
 	@SerializedName("player_slot")
 	public int playerSlot;
-	
-	/**
-	 * Numeric ID of the hero that the player used.
-	 */
-	@SerializedName("hero_id")
-	public int heroId;
 	
 	/**
 	 * Numeric item ID for the top-left slot.
