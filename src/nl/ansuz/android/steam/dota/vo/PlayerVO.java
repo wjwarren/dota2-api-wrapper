@@ -157,5 +157,19 @@ public class PlayerVO {
 	public boolean isRadiant() {
 		return playerSlot < 5;
 	}
+	
+	/**
+	 * @return The player's KDR.
+	 */
+	public double getKillDeathRadio() {
+		return kills / deaths;
+	}
+	
+	/**
+	 * @return Total amount of gold earned during the match.
+	 */
+	public int getTotalGold() {
+		return goldSpent + gold;
+	}
 
 }

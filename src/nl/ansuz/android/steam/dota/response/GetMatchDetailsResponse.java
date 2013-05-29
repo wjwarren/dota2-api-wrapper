@@ -1,5 +1,6 @@
 package nl.ansuz.android.steam.dota.response;
 
+import nl.ansuz.android.steam.dota.vo.PickBanVO;
 import nl.ansuz.android.steam.dota.vo.PlayerVO;
 
 import com.google.gson.annotations.SerializedName;
@@ -33,19 +34,29 @@ public class GetMatchDetailsResponse {
 	 * @author Wijnand
 	 */
 	public enum GameMode {
-		UNKNOWN,
+		//UNKNOWN,
 		ALL_PICK,
 		SINGLE_DRAFT,
-		CAPTAINS_MODE,
-		RANDOM_DRAFT,
 		ALL_RANDOM,
-		REVERSE_DRAFT,
-		WTF_MODE,
-		DIRE_TIDE;
+		RANDOM_DRAFT,
+		CAPTAINS_DRAFT,
+		CAPTAINS_MODE,
+		DEATH_MODE,
+		DIRETIDE,
+		REVERSE_CAPTAINS_MODE,
+		THE_GREEVILING,
+		TUTORIAL,
+		MID_ONLY,
+		LEAST_PLAYED,
+		NEW_PLAYER_POOL,
+		UNKNOWN;
 		
 		private static final GameMode[] typeValues = GameMode.values();
 
 		public static GameMode fromInteger(int i) {
+			if(i < 0 || i > typeValues.length - 2) {
+				i = typeValues.length - 1;
+			}
 			return typeValues[i];
 		}
 	}
@@ -183,5 +194,11 @@ public class GetMatchDetailsResponse {
 	 */
 	@SerializedName("game_mode")
 	public int gameMode;
+	
+	/**
+	 * A list of the picks and bans in the match, if the game mode is Captains Mode.
+	 */
+	@SerializedName("picks_bans")
+	public PickBanVO[] picksBans;
 	
 }
