@@ -36,5 +36,4 @@ public class GetLeagueListing extends DotaRequest implements ISteamRequest {
 		
 		return baseUrl;
 	}
-	
 }

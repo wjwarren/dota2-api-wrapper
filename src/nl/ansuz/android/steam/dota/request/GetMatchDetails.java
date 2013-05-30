@@ -5,6 +5,7 @@ import nl.ansuz.android.steam.request.ISteamRequest;
 /**
  * Helps constructing the url to retreive details of a Dota match.
  * 
+ * @see http://wiki.teamfortress.com/wiki/WebAPI/GetMatchDetails
  * @author Wijnand
  */
 public class GetMatchDetails extends DotaRequest implements ISteamRequest {

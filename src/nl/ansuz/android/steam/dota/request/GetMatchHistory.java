@@ -25,6 +25,12 @@ public class GetMatchHistory extends DotaRequest implements ISteamRequest {
 		public final static String HERO_ID = "hero_id";
 		
 		/**
+		 * Search for matches with a specific game mode.
+		 * @see GetMatchDetailsResponse#GameMode
+		 */
+		public final static String GAME_MODE  = "game_mode ";
+		
+		/**
 		 * 0 for any, 1 for normal, 2 for high, 3 for very high skill.
 		 */
 		public final static String SKILL = "skill";
@@ -55,9 +61,14 @@ public class GetMatchHistory extends DotaRequest implements ISteamRequest {
 		public final static String START_AT_MATCH_ID = "start_at_match_id";
 		
 		/**
-		 * Defaults is 25 matches, this can limit to less.
+		 * Amount of matches to include in results (default: 25).
 		 */
 		public final static String MATCHES_REQUESTED = "matches_requested";
+		
+		/**
+		 * Whether to limit results to tournament matches.
+		 */
+		public final static String TOURNAMENT_GAMES_ONLY = "tournament_games_only";
 
 	}
 	

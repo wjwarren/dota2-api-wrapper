@@ -9,11 +9,8 @@ import com.google.gson.annotations.SerializedName;
  * 
  * @author Wijnand
  */
-public class GetMatchHistoryResponse {
+public class GetMatchHistoryResponse extends DotaResponse {
 
-	@SerializedName("status")
-	public int status;
-	
 	@SerializedName("num_results")
 	public int numberOfResults;
 	

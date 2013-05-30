@@ -60,6 +60,13 @@ public class GetMatchDetailsResponse {
 			return typeValues[i];
 		}
 	}
+
+	private static final int ONE_MINUTE = 60;
+	
+	private int totalGoldRadiant = -1;
+	private int totalGoldDire = -1;
+	private int totalXpRadiant = -1;
+	private int totalXpDire = -1;
 	
 	/**
 	 * The list of players that participated in this match.
@@ -68,7 +75,7 @@ public class GetMatchDetailsResponse {
 	public PlayerVO[] players;
 	
 	/**
-	 * ???
+	 * The season the game was played in.
 	 */
 	@SerializedName("season")
 	public int season;
@@ -178,19 +185,7 @@ public class GetMatchDetailsResponse {
 	public int negativeVotes;
 	
 	/**
-	 * The type of game that was played:
-	 *  - All pick (1)
-	 *  - Single draft
-	 *  - Captain's Mode
-	 *  - Random Draft
-	 *  - All Random (5)
-	 *  - Reverse Draft
-	 *  - WTF Mode
-	 *  (- Dire Tide?)
-	 *  
-	 * @see http://www.dota2wiki.com/wiki/Game_Modes
-	 * 
-	 * Need to figure out which int value represents which mode.
+	 * The type of game that was played.
 	 */
 	@SerializedName("game_mode")
 	public int gameMode;
@@ -200,5 +195,61 @@ public class GetMatchDetailsResponse {
 	 */
 	@SerializedName("picks_bans")
 	public PickBanVO[] picksBans;
+	
+	private void calculateTotals() {
+		// Only calculate total when we haven't done so yet.
+		if (totalGoldRadiant < 0) {
+			totalGoldRadiant = 0;
+			totalGoldDire = 0;
+			totalXpRadiant = 0;
+			totalXpDire = 0;
+			
+			for (PlayerVO player : players) {
+				if (player.isRadiant()) {
+					totalGoldRadiant += player.getTotalGold();
+					totalXpRadiant += player.xpPerMinute * duration / ONE_MINUTE;
+				} else {
+					totalGoldDire += player.getTotalGold();
+					totalXpDire += player.xpPerMinute * duration / ONE_MINUTE;
+				}
+			}
+		}
+	}
+	
+	/**
+	 * NOTE: This is an estimation and might be slightly off compared to the actual number.
+	 * @return The total gold earned by the Radiant team.
+	 */
+	public int getTotalGoldRadiant() {
+		calculateTotals();
+		return totalGoldRadiant;
+	}
+	
+	/**
+	 * NOTE: This is an estimation and might be slightly off compared to the actual number.
+	 * @return The total gold earned by the Dire team.
+	 */
+	public int getTotalGoldDire() {
+		calculateTotals();
+		return totalGoldDire;
+	}
+	
+	/**
+	 * NOTE: This is an estimation and might be slightly off compared to the actual number.
+	 * @return The total XP earned by the Radiant team.
+	 */
+	public int getTotalXpRadiant() {
+		calculateTotals();
+		return totalXpRadiant;
+	}
+	
+	/**
+	 * NOTE: This is an estimation and might be slightly off compared to the actual number.
+	 * @return The total XP earned by the Dire team.
+	 */
+	public int getTotalXpDire() {
+		calculateTotals();
+		return totalXpDire;
+	}
 	
 }

@@ -3,7 +3,7 @@ package nl.ansuz.android.steam.dota.vo;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * DotA 2 league team.
+ * DotA 2 league team. (During a match.)
  * 
  * @author Wijnand
  */

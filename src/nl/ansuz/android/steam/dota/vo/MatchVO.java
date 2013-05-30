@@ -20,4 +20,5 @@ public class MatchVO {
 	
 	@SerializedName("players")
 	public PlayerVO[] players;
+	
 }
