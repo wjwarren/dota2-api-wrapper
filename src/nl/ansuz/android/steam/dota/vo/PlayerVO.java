@@ -23,36 +23,42 @@ public class PlayerVO extends BasePlayerVO {
 	
 	/**
 	 * Numeric item ID for the top-left slot.
+	 * Get the item details from {@link HeroBuildItemList#getItemById(int)}.
 	 */
 	@SerializedName("item_0")
 	public int item0;
 	
 	/**
 	 * Numeric item ID for the top-center slot.
+	 * Get the item details from {@link HeroBuildItemList#getItemById(int)}.
 	 */
 	@SerializedName("item_1")
 	public int item1;
 	
 	/**
 	 * Numeric item ID for the top-right slot.
+	 * Get the item details from {@link HeroBuildItemList#getItemById(int)}.
 	 */
 	@SerializedName("item_2")
 	public int item2;
 	
 	/**
 	 * Numeric item ID for the bottom-left slot.
+	 * Get the item details from {@link HeroBuildItemList#getItemById(int)}.
 	 */
 	@SerializedName("item_3")
 	public int item3;
 	
 	/**
 	 * Numeric item ID for the bottom-center slot.
+	 * Get the item details from {@link HeroBuildItemList#getItemById(int)}.
 	 */
 	@SerializedName("item_4")
 	public int item4;
 	
 	/**
-	 * Numeric item ID for the bottom-center slot.
+	 * Numeric item ID for the bottom-right slot.
+	 * Get the item details from {@link HeroBuildItemList#getItemById(int)}.
 	 */
 	@SerializedName("item_5")
 	public int item5;
@@ -133,13 +139,25 @@ public class PlayerVO extends BasePlayerVO {
 	 * Amount of damage the player healed.
 	 */
 	@SerializedName("hero_healing")
-	public int hero_healing;
+	public int heroHealing;
 	
 	/**
 	 * The player's level at the end of the match.
 	 */
 	@SerializedName("level")
 	public int level;
+	
+	/**
+	 * A list detailing a player's ability upgrades.
+	 */
+	@SerializedName("ability_upgrades")
+	public AbilityUpgradeVO[] abilityUpgrades;
+	
+	/**
+	 * Additional playable units owned by the player.
+	 */
+	@SerializedName("additional_units")
+	public AdditionalUnitVO[] additionalUnits;
 	
 	/**
 	 * @return Whether or not the player was in the Radiant team.

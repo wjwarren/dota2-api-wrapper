@@ -1,5 +1,6 @@
 package nl.ansuz.android.steam.dota.response;
 
+import nl.ansuz.android.steam.dota.util.DotaBuildingStatus.DotaTower;
 import nl.ansuz.android.steam.dota.vo.PickBanVO;
 import nl.ansuz.android.steam.dota.vo.PlayerVO;
 
@@ -30,16 +31,19 @@ public class GetMatchDetailsResponse {
 	
 	/**
 	 * Type of game mode.
+	 * The docs seem to be completely off here. What is listed on the site below, doesn't match with what I've seen in 
+	 * testing.
 	 * 
+	 * @see http://wiki.teamfortress.com/wiki/WebAPI/GetMatchDetails
 	 * @author Wijnand
 	 */
 	public enum GameMode {
-		//UNKNOWN,
-		ALL_PICK,
-		SINGLE_DRAFT,
-		ALL_RANDOM,
-		RANDOM_DRAFT,
+		UNKNOWN,
+		ALL_PICK, // 1 - verified
 		CAPTAINS_DRAFT,
+		RANDOM_DRAFT, // 3 - verified
+		SINGLE_DRAFT, // 4 - verified
+		ALL_RANDOM, // 5 - verified
 		CAPTAINS_MODE,
 		DEATH_MODE,
 		DIRETIDE,
@@ -48,16 +52,15 @@ public class GetMatchDetailsResponse {
 		TUTORIAL,
 		MID_ONLY,
 		LEAST_PLAYED,
-		NEW_PLAYER_POOL,
-		UNKNOWN;
+		NEW_PLAYER_POOL;
 		
-		private static final GameMode[] typeValues = GameMode.values();
+		private static final GameMode[] gameModeValues = GameMode.values();
 
 		public static GameMode fromInteger(int i) {
-			if(i < 0 || i > typeValues.length - 2) {
-				i = typeValues.length - 1;
+			if(i < 1 || i > gameModeValues.length - 1) {
+				i = 0;
 			}
-			return typeValues[i];
+			return gameModeValues[i];
 		}
 	}
 
@@ -105,7 +108,15 @@ public class GetMatchDetailsResponse {
 	public int matchId;
 	
 	/**
+	 * A "sequence number", representing the order in which matches were recorded.
+	 */
+	@SerializedName("match_seq_num")
+	public long matchSequenceNumber;
+	
+	/**
 	 * An 11-bit unsinged int representing Radiant tower status.
+	 * Use in conjunction with {@link DotaBuildingStatus#isTowerUp(int, DotaTower)} to determine if the tower is still
+	 * up.
 	 * 
 	 * @see http://dev.dota2.com/showthread.php?t=57234
 	 */
@@ -113,7 +124,9 @@ public class GetMatchDetailsResponse {
 	public int towerStatusRadiant;
 	
 	/**
-	 * An 11-bit unsinged int representing Dire tower status
+	 * An 11-bit unsinged int representing Dire tower status.
+	 * Use in conjunction with {@link DotaBuildingStatus#isTowerUp(int, DotaTower)} to determine if the tower is still
+	 * up.
 	 * 
 	 * @see http://dev.dota2.com/showthread.php?t=57234
 	 */
@@ -122,6 +135,8 @@ public class GetMatchDetailsResponse {
 	
 	/**
 	 * A 6-bit unsinged int representing Radiant barracks status
+	 * Use in conjunction with {@link DotaBuildingStatus#isTowerUp(int, DotaBarracks)} to determine if the barracks are
+	 * still up.
 	 * 
 	 * @see http://dev.dota2.com/showthread.php?t=57234
 	 */
@@ -130,6 +145,8 @@ public class GetMatchDetailsResponse {
 	
 	/**
 	 * A 6-bit unsinged int representing Dire barracks status
+	 * Use in conjunction with {@link DotaBuildingStatus#isTowerUp(int, DotaBarracks)} to determine if the barracks are
+	 * still up.
 	 * 
 	 * @see http://dev.dota2.com/showthread.php?t=57234
 	 */
@@ -196,6 +213,9 @@ public class GetMatchDetailsResponse {
 	@SerializedName("picks_bans")
 	public PickBanVO[] picksBans;
 	
+	/**
+	 * Calculates the total Gold and XP earned by Radiant and Dire.
+	 */
 	private void calculateTotals() {
 		// Only calculate total when we haven't done so yet.
 		if (totalGoldRadiant < 0) {
