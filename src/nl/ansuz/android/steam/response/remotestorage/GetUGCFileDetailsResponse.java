@@ -12,10 +12,10 @@ import nl.ansuz.android.steam.vo.remotestorage.UgcFileDetailsVO;
 public class GetUGCFileDetailsResponse {
 
 	/**
-	 * List of file details.
+	 * File details.
 	 */
 	@SerializedName("data")
-	public UgcFileDetailsVO[] data;
+	public UgcFileDetailsVO data;
 
 	/**
 	 * Object returned on non-HTTP errors.

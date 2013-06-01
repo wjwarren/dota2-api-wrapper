@@ -33,6 +33,9 @@ public class GetMatchDetailsResponse {
 	 * Type of game mode.
 	 * The docs seem to be completely off here. What is listed on the site below, doesn't match with what I've seen in 
 	 * testing.
+	 * Correct order is listed on: 
+	 * https://bitbucket.org/VoiDeD/steamre/src/0152b728b88103ceb8afdaa8b157927135451d8d/Resources/Protobufs/dota/dota_gcmessages.proto
+	 * (DOTA_GameMode).
 	 * 
 	 * @see http://wiki.teamfortress.com/wiki/WebAPI/GetMatchDetails
 	 * @author Wijnand
@@ -40,20 +43,19 @@ public class GetMatchDetailsResponse {
 	public enum GameMode {
 		UNKNOWN,
 		ALL_PICK, // 1 - verified
-		CAPTAINS_DRAFT,
+		CAPTAINS_MODE,
 		RANDOM_DRAFT, // 3 - verified
 		SINGLE_DRAFT, // 4 - verified
 		ALL_RANDOM, // 5 - verified
-		CAPTAINS_MODE,
-		DEATH_MODE,
-		DIRETIDE,
+		INTRO,
+		DIRETIDE, // = Halloween
 		REVERSE_CAPTAINS_MODE,
-		THE_GREEVILING,
+		THE_GREEVILING, // = Xmas
 		TUTORIAL,
 		MID_ONLY,
 		LEAST_PLAYED,
 		NEW_PLAYER_POOL;
-		
+
 		private static final GameMode[] gameModeValues = GameMode.values();
 
 		public static GameMode fromInteger(int i) {
