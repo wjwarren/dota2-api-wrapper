@@ -12,5 +12,8 @@ gen/
 libs/
 project.properties
 
+# IntelliJ
+*.iml
+
 # Misc
 tools/itemparser/items.txt

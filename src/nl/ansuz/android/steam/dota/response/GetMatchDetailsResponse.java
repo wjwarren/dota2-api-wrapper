@@ -5,6 +5,7 @@ import nl.ansuz.android.steam.dota.vo.PickBanVO;
 import nl.ansuz.android.steam.dota.vo.PlayerVO;
 
 import com.google.gson.annotations.SerializedName;
+import nl.ansuz.android.steam.dota.vo.TeamMatchTotalsVO;
 
 /**
  * Response object for the GetMatchDetails request.
@@ -67,12 +68,10 @@ public class GetMatchDetailsResponse {
 	}
 
 	private static final int ONE_MINUTE = 60;
-	
-	private int totalGoldRadiant = -1;
-	private int totalGoldDire = -1;
-	private int totalXpRadiant = -1;
-	private int totalXpDire = -1;
-	
+
+	private TeamMatchTotalsVO radiantTotals = null;
+	private TeamMatchTotalsVO direTotals = null;
+
 	/**
 	 * The list of players that participated in this match.
 	 */
@@ -216,62 +215,111 @@ public class GetMatchDetailsResponse {
 	public PickBanVO[] picksBans;
 	
 	/**
-	 * Calculates the total Gold and XP earned by Radiant and Dire.
+	 * Radiant's league team unique ID.
+	 * Use {@link GetTeamInfoByTeamId} to retrieve full team details.
+	 */
+	@SerializedName("radiant_team_id")
+	public int radiantTeamId;
+	
+	/**
+	 * Radiant's league team name.
+	 */
+	@SerializedName("radiant_name")
+	public String radiantTeamName;
+	
+	/**
+	 * Radiant's league team logo UGC id.
+	 * Use {@link GetUGCFileDetails} to retrieve file details.
+	 */
+	@SerializedName("radiant_logo")
+	public long radiantTeamLogo;
+	
+	/**
+	 * Whether the players for the Radiant league team are all team members.
+	 */
+	@SerializedName("radiant_team_complete")
+	public int radiantTeamComplete;
+	
+	/**
+	 * Radiant's league team unique ID.
+	 * Use {@link GetTeamInfoByTeamId} to retrieve full team details.
+	 */
+	@SerializedName("dire_team_id")
+	public int direTeamId;
+	
+	/**
+	 * Radiant's league team name.
+	 */
+	@SerializedName("dire_name")
+	public String direTeamName;
+	
+	/**
+	 * Radiant's league team logo UGC id.
+	 * Use {@link GetUGCFileDetails} to retrieve file details.
+	 */
+	@SerializedName("dire_logo")
+	public long direTeamLogo;
+	
+	/**
+	 * Whether the players for the Radiant league team are all team members.
+	 */
+	@SerializedName("dire_team_complete")
+	public int direTeamComplete;
+
+	/**
+	 * Calculates the total Gold, XP, kills, deaths, assists by Radiant and Dire.
 	 */
 	private void calculateTotals() {
 		// Only calculate total when we haven't done so yet.
-		if (totalGoldRadiant < 0) {
-			totalGoldRadiant = 0;
-			totalGoldDire = 0;
-			totalXpRadiant = 0;
-			totalXpDire = 0;
-			
+		if (radiantTotals == null) {
+			radiantTotals = new TeamMatchTotalsVO();
+			direTotals = new TeamMatchTotalsVO();
+
 			for (PlayerVO player : players) {
 				if (player.isRadiant()) {
-					totalGoldRadiant += player.getTotalGold();
-					totalXpRadiant += player.xpPerMinute * duration / ONE_MINUTE;
+					radiantTotals.totalGold += player.getTotalGold();
+					radiantTotals.totalXp += player.xpPerMinute * duration / ONE_MINUTE;
+					radiantTotals.totalKills += player.kills;
+					radiantTotals.totalDeaths += player.deaths;
+					radiantTotals.totalAssists += player.assists;
 				} else {
-					totalGoldDire += player.getTotalGold();
-					totalXpDire += player.xpPerMinute * duration / ONE_MINUTE;
+					direTotals.totalGold += player.getTotalGold();
+					direTotals.totalXp += player.xpPerMinute * duration / ONE_MINUTE;
+					direTotals.totalKills += player.kills;
+					direTotals.totalDeaths += player.deaths;
+					direTotals.totalAssists += player.assists;
 				}
 			}
 		}
 	}
-	
+
 	/**
-	 * NOTE: This is an estimation and might be slightly off compared to the actual number.
-	 * @return The total gold earned by the Radiant team.
+	 * @return The team total scores for the Radiant.
 	 */
-	public int getTotalGoldRadiant() {
+	public TeamMatchTotalsVO getTotalsRadiant() {
 		calculateTotals();
-		return totalGoldRadiant;
+		return radiantTotals;
+	}
+
+	/**
+	 * @return The team total scores for the Dire.
+	 */
+	public TeamMatchTotalsVO getTotalsDire() {
+		calculateTotals();
+		return direTotals;
+	}
+
+	/**
+	 * @return Whether the players for the Radiant team are all team members.
+	 */
+	public boolean isRadiantTeamComplete() {
+		return radiantTeamComplete > 0;
 	}
 	
 	/**
-	 * NOTE: This is an estimation and might be slightly off compared to the actual number.
-	 * @return The total gold earned by the Dire team.
+	 * @return Whether the players for the Dire team are all team members.
 	 */
-	public int getTotalGoldDire() {
-		calculateTotals();
-		return totalGoldDire;
+	public boolean isDireTeamComplete() {
+		return radiantTeamComplete > 0;
 	}
-	
-	/**
-	 * NOTE: This is an estimation and might be slightly off compared to the actual number.
-	 * @return The total XP earned by the Radiant team.
-	 */
-	public int getTotalXpRadiant() {
-		calculateTotals();
-		return totalXpRadiant;
-	}
-	
-	/**
-	 * NOTE: This is an estimation and might be slightly off compared to the actual number.
-	 * @return The total XP earned by the Dire team.
-	 */
-	public int getTotalXpDire() {
-		calculateTotals();
-		return totalXpDire;
-	}
-	
 }
