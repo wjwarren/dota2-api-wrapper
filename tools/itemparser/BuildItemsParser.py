@@ -132,7 +132,7 @@ class BuildItemsParser:
         result += id + ", "
         result += "\"" + abilityTranslatedName + "\", "
         result += "\"" + abilityName + "\", "
-        result += "-1, " if abilityBehavior == "-1" else "BuildItemVO.AbilityBehavior." + abilityBehavior.replace(" | ", ".behaviourValue + BuildItemVO.AbilityBehavior.") + ".behaviourValue, "
+        result += "-1, " if abilityBehavior == "-1" else "AbilityVO.Behavior." + abilityBehavior.replace(" | ", ".behaviourValue + AbilityVO.Behavior.") + ".behaviourValue, "
         
         result += "null, " if abilityCastRange == "" else "new int[]{" + abilityCastRange.replace(" ", ", ") + "}, "
         result += abilityCastPoint + ", "

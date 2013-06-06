@@ -1,6 +1,7 @@
 package nl.ansuz.android.steam.dota.util;
 
 import nl.ansuz.android.steam.dota.vo.BuildItemVO;
+import nl.ansuz.android.steam.dota.vo.heroes.AbilityVO;
 
 /**
  * Auto-generated Hero build item list.
