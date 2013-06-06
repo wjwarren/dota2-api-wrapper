@@ -23,7 +23,7 @@ class BuildItemsParser:
         print "=   DotA hero build items parser   ="
         print "===================================="
         
-        self.compiledOpenPattern = re.compile("^\t{$", re.DOTALL | re.MULTILINE)
+        self.compiledOpenPattern = re.compile("^\t//==================================", re.DOTALL | re.MULTILINE)
         self.compiledClosePattern = re.compile("^\t}$", re.DOTALL | re.MULTILINE)
         
         self.loadConfig();
@@ -112,6 +112,7 @@ class BuildItemsParser:
         @param item: The item to parse.
     """
     def parseSingleItem(self, item):
+        abilityTranslatedName = self.findItemName(item, "Unknown")
         id = self.findPropertyValue(item, "ID", "-1")
         abilityName = self.findPropertyValue(item, "AbilityName", "")
         abilityBehavior = self.findPropertyValue(item, "AbilityBehavior", "-1")
@@ -129,6 +130,7 @@ class BuildItemsParser:
         
         result = "itemList[" + id + "] = new BuildItemVO("
         result += id + ", "
+        result += "\"" + abilityTranslatedName + "\", "
         result += "\"" + abilityName + "\", "
         result += "-1, " if abilityBehavior == "-1" else "BuildItemVO.AbilityBehavior." + abilityBehavior.replace(" | ", ".behaviourValue + BuildItemVO.AbilityBehavior.") + ".behaviourValue, "
         
@@ -145,7 +147,25 @@ class BuildItemsParser:
         result += ");"
         
         return result
-        
+
+	"""
+		Find a hero build item's translated name, i.e. "Blink dagger".
+		
+		@param item: The item to search through.
+		@param defaultValue: Default value to use if the property (or value) 
+            can't be found. 
+	"""
+    def findItemName(self, item, defaultValue):
+		result = defaultValue
+		nameStart = item.find("// ") + 3
+		nameEnd = item.find("//=", 4) - 2
+		
+		foundName = item[nameStart:nameEnd]
+		if len(foundName) > 0:
+			result = foundName
+
+		return result;
+		
     """
         Finds a single property's value.
         
@@ -155,7 +175,7 @@ class BuildItemsParser:
             can't be found. 
     """
     def findPropertyValue(self, item, propertyName, defaultValue):
-        result = defaultValue;
+        result = defaultValue
         namePosition = item.find(propertyName)
         
         if namePosition > -1:

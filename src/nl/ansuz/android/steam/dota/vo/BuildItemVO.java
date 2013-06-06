@@ -78,7 +78,15 @@ public class BuildItemVO {
 		/**
 		 * No idea what this one is, it isn't documented.
 		 */
-		DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL(16384);
+		DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL(1<<14),
+		/**
+		 * Undocumented.
+		 */
+		DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK(1<<15),
+		/**
+		 * Undocumented.
+		 */
+		DOTA_ABILITY_BEHAVIOR_DONT_RESUME_MOVEMENT(1<<16);
 
 		public final int behaviourValue;
 
@@ -92,7 +100,14 @@ public class BuildItemVO {
 	 * unique ID number for this item.
 	 */
 	public int id;
+	/**
+	 * Translated name of the ability, i.e. "Blink dagger".
+	 */
 	public String abilityName;
+	/**
+	 * Translation token for the ability name, i.e. "item_blink".
+	 */
+	public String abilityNameToken;
 	public int abilityBehavior;
 
 	// Stats
@@ -108,14 +123,15 @@ public class BuildItemVO {
 	public boolean sideShop;
 	public String[] invalidHeroes;
 
-	public BuildItemVO(int id, String abilityName, int abilityBehavior,
-			int[] abilityCastRange, double abilityCastPoint,
-			double[] abilityCooldown, int[] abilityManaCost, int itemCost,
-			String[] itemShopTags, String itemQuality, boolean sideShop,
-			String[] invalidHeroes) {
+	public BuildItemVO(int id, String abilityName, String abilityNameToken, 
+			int abilityBehavior, int[] abilityCastRange,
+			double abilityCastPoint, double[] abilityCooldown,
+			int[] abilityManaCost, int itemCost, String[] itemShopTags,
+			String itemQuality, boolean sideShop, String[] invalidHeroes) {
 
 		this.id = id;
 		this.abilityName = abilityName;
+		this.abilityNameToken = abilityNameToken;
 		this.abilityBehavior = abilityBehavior;
 
 		this.abilityCastRange = abilityCastRange;
