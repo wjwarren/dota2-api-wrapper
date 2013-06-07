@@ -93,7 +93,51 @@ public class AbilityVO {
 		/**
 		 * Undocumented.
 		 */
-		DOTA_ABILITY_BEHAVIOR_DONT_RESUME_MOVEMENT(1<<16);
+		DOTA_ABILITY_BEHAVIOR_DONT_RESUME_MOVEMENT(1<<16),
+		/**
+		 * Undocumented.
+		 */
+		DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE(1<<17),
+		/**
+		 * Undocumented.
+		 */
+		DOTA_ABILITY_BEHAVIOR_AUTOCAST(1<<18),
+		/**
+		 * Undocumented.
+		 */
+		DOTA_ABILITY_BEHAVIOR_ATTACK(1<<19),
+		/**
+		 * Undocumented.
+		 */
+		DOTA_ABILITY_BEHAVIOR_AURA(1<<20),
+		/**
+		 * Undocumented.
+		 */
+		DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING(1<<21),
+		/**
+		 * Undocumented.
+		 */
+		DOTA_ABILITY_BEHAVIOR_NORMAL_WHEN_STOLEN(1<<22),
+		/**
+		 * Undocumented.
+		 */
+		DOTA_ABILITY_BEHAVIOR_DONT_ALERT_TARGET(1<<22),
+		/**
+		 * Undocumented.
+		 */
+		DOTA_ABILITY_BEHAVIOR_RUNE_TARGET(1<<23),
+		/**
+		 * Undocumented.
+		 */
+		DOTA_ABILITY_BEHAVIOR_UNRESTRICTED(1<<24),
+		/**
+		 * Undocumented.
+		 */
+		DOTA_ABILITY_TYPE_ULTIMATE(1<<25),
+		/**
+		 * Undocumented.
+		 */
+		DOTA_ABILITY_BEHAVIOR_DONT_CANCEL_MOVEMENT(1<<26);
 
 		public final int behaviourValue;
 
@@ -102,37 +146,42 @@ public class AbilityVO {
 		}
 	}
 
+	private final static String IMAGE_URL_PREFIX = "http://media.steampowered.com/apps/dota2/images/abilities/";
+	private final static String IMAGE_URL_SUFFIX = "_hp1.png";
+
 	// General
 	public int id;
 	public String name;
+	public String nameToken;
 	public Type type;
 	public int behavior;
 	public int onCastbar;
 	public int onLearnbar;
 
 	// Stats
-	public int castRange;
+	public int[] castRange;
 	public int castRangeBuffer;
 	public double[] castPoint;
 	public double[] channelTime;
 	public double[] cooldown;
 	public double[] duration;
 	public String sharedCooldown;
-	public int[] damage;
+	public double[] damage;
 	public int[] manaCost;
 	public double modifierSupportValue;
 	public int modifierSupportBonus;
 
-	public AbilityVO(int id, String name, Type type, int behavior, int onCastbar, int onLearnbar, int castRange,
-			int castRangeBuffer, double[] castPoint, double[] channelTime, double[] cooldown, double[] duration,
-			String sharedCooldown, int[] damage, int[] manaCost, double modifierSupportValue,
-			int modifierSupportBonus) {
+	public AbilityVO(int id, String name, String nameToken, Type type, int behavior, int onCastbar, int onLearnbar,
+					int[] castRange, int castRangeBuffer, double[] castPoint, double[] channelTime, double[] cooldown,
+					double[] duration, String sharedCooldown, double[] damage, int[] manaCost,
+					double modifierSupportValue, int modifierSupportBonus) {
 
 		init();
 
 		// General
 		this.id = id;
 		this.name = name;
+		this.nameToken = nameToken;
 		if (type != null) {
 			this.type = type;
 		}
@@ -145,7 +194,7 @@ public class AbilityVO {
 		}
 
 		// Stats
-		if (castRange > 0) {
+		if (castRange != null) {
 			this.castRange = castRange;
 		}
 		if (castRangeBuffer > 0) {
@@ -185,23 +234,31 @@ public class AbilityVO {
 		// General
 		id = 0;
 		name = "base";
+		nameToken = "";
 		type = Type.DOTA_ABILITY_TYPE_BASIC;
 		behavior = Behavior.DOTA_ABILITY_BEHAVIOR_NONE.behaviourValue;
 		onCastbar = 1;
 		onLearnbar = 1;
 
 		// Stats
-		castRange = 0;
+		castRange = new int[]{0};
 		castRangeBuffer = 250;
 		castPoint = new double[]{0.0, 0.0, 0.0, 0.0};
 		channelTime = new double[]{0.0, 0.0, 0.0, 0.0};
 		cooldown = new double[]{0.0, 0.0, 0.0, 0.0};
 		duration = new double[]{0.0, 0.0, 0.0, 0.0};
 		sharedCooldown = "";
-		damage = new int[]{0, 0, 0, 0};
+		damage = new double[]{0, 0, 0, 0};
 		manaCost = new int[]{0, 0, 0, 0};
 		modifierSupportValue = 1.0;
 		modifierSupportBonus = 0;
+	}
+
+	/**
+	 * Creates a URL to download the item image from.
+	 */
+	public String getImageUrl() {
+		return IMAGE_URL_PREFIX + nameToken + IMAGE_URL_SUFFIX;
 	}
 
 }

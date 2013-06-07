@@ -1,5 +1,7 @@
 package nl.ansuz.android.steam.dota.vo;
 
+import nl.ansuz.android.steam.dota.vo.heroes.AbilityVO;
+
 /**
  * Representation of a DotA hero build item.
  * 

@@ -15,5 +15,6 @@ project.properties
 # IntelliJ
 *.iml
 
-# Misc
+# DotA2 files
 tools/itemparser/items.txt
+tools/abilityparser/npc_abilities.txt
