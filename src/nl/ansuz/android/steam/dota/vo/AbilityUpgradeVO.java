@@ -11,7 +11,7 @@ public class AbilityUpgradeVO {
 
 	/**
 	 * ID of the ability upgraded.
-	 * TODO: How does this translate to a human-readable ability?
+	 * Pass this ID to {@link AbilityList#getAbilityById(int)} to obtain the actual ability.
 	 */
 	@SerializedName("ability")
 	public int ability;

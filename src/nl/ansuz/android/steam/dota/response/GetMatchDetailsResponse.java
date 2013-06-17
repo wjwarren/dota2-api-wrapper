@@ -20,8 +20,13 @@ public class GetMatchDetailsResponse {
 	 * @author Wijnand
 	 */
 	public enum LobbyType {
-		HUMAN,
-		CO_OP_BOT;
+		PUBLIC_MATCHMAKING,
+		PRACTICE,
+		TOURNAMENT,
+		TUTORIAL,
+		CO_OP_BOTS,
+		TEAM_MATCH,
+		SOLO_QUEUE;
 		
 		private static final LobbyType[] typeValues = LobbyType.values();
 		
@@ -55,7 +60,8 @@ public class GetMatchDetailsResponse {
 		TUTORIAL,
 		MID_ONLY,
 		LEAST_PLAYED,
-		NEW_PLAYER_POOL;
+		NEW_PLAYER_POOL, 
+		COMPENDIUM;
 
 		private static final GameMode[] gameModeValues = GameMode.values();
 
