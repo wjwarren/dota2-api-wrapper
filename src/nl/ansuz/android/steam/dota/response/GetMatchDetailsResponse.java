@@ -105,7 +105,7 @@ public class GetMatchDetailsResponse {
 	/**
 	 * Date in UTC seconds since Jan 1, 1970 (unix time format).
 	 */
-	@SerializedName("starttime")
+	@SerializedName("start_time")
 	public int startTime;
 	
 	/**
