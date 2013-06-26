@@ -71,7 +71,6 @@ public class BuildItemVO {
 	 * Creates a URL to download the item image from.
 	 */
 	public String getImageUrl() {
-		return "http://media.steampowered.com/apps/dota2/images/items/"
-				+ abilityName.replace("item_", "") + "_lg.png";
+		return "http://media.steampowered.com/apps/dota2/images/items/" + abilityName.replace("item_", "") + "_lg.png";
 	}
 }
