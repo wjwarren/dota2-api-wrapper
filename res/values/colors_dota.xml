@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+	List of player colours as seen in the HUD in-game.
+	Colours are listed in the order they appear on the HUD, left to right.
+-->
+<resources>
+	<!-- Radiant colours -->
+	<color name="radiant_blue">#2E6AE6</color>
+	<color name="radiant_teal">#5DE6AD</color>
+	<color name="radiant_purple">#AD00AD</color>
+	<color name="radiant_yellow">#DCD90A</color>
+	<color name="radiant_orange">#E66200</color>
+
+	<!-- Dire colours -->
+	<color name="dire_pink">#E67AB0</color>
+	<color name="dire_pus_yellow">#92A440</color>
+	<color name="dire_light_blue">#5CC5E0</color>
+	<color name="dire_green">#00771F</color>
+	<color name="dire_brown">#956000</color>
+</resources>
