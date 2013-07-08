@@ -38,3 +38,11 @@ First extract `scripts/npc/items.txt` from `<path to steam>/Steam/steamapps/comm
 After this, tweak `tools/itemparser/BuildItemsParser.cfg` to meet your needs.
 
 Last, run `python tools/itemparser/BuildItemsParser.py`
+
+###Generating AbilityList.java
+Pretty much the same as "Generating HeroBuildItemList.java" except for two small changes.
+First, make sure to extract `npc_abilities.txt` instead of `items.txt` from the vpk file.
+Second, use the Python script found under `tools/abilityparser/`.
+
+###Player colours
+The player colours (as found on the in-game HUD) are listed in `res/values/colors_dota.xml`.
