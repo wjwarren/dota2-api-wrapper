@@ -12,15 +12,16 @@ import nl.ansuz.android.steam.request.ISteamRequest;
 public class GetLiveLeagueGames extends DotaRequest implements ISteamRequest {
 
 	public final static String METHOD_NAME = "GetLiveLeagueGames";
-	
+
+	/** {@inheritDoc} */
 	@Override
 	protected String getBaseUrl(int appId) {
 		String baseUrl = super.getBaseUrl(appId);
 		baseUrl += "/" + METHOD_NAME;
 		baseUrl += "/" + API_VERSION_ONE;
 		baseUrl += "/";
-		
+
 		return baseUrl;
 	}
-	
+
 }

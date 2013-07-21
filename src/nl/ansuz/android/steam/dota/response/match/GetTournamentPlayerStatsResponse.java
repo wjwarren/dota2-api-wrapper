@@ -4,6 +4,8 @@ import com.google.gson.annotations.SerializedName;
 import nl.ansuz.android.steam.dota.response.DotaResponse;
 
 /**
+ * Response object for the GetTournamentPlayerStats API request.
+ *
  * @author Wijnand
  */
 public class GetTournamentPlayerStatsResponse extends DotaResponse {
