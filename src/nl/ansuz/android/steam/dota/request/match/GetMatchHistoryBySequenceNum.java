@@ -1,5 +1,6 @@
-package nl.ansuz.android.steam.dota.request;
+package nl.ansuz.android.steam.dota.request.match;
 
+import nl.ansuz.android.steam.dota.request.DotaRequest;
 import nl.ansuz.android.steam.request.ISteamRequest;
 
 /**
@@ -18,22 +19,23 @@ public class GetMatchHistoryBySequenceNum extends DotaRequest implements ISteamR
 		 * The match sequence number to start returning results from.
 		 */
 		public final static String START_AT_MATCH_SEQUENCE_NUMBER = "start_at_match_seq_num";
-		
+
 		/**
 		 * The amount of matches to return.
 		 */
 		public final static String NUMBER_OF_MATCHES_REQUESTED = "matches_requested";
 	}
-	
+
 	public final static String METHOD_NAME = "GetMatchHistoryBySequenceNum";
-	
+
+	/** {@inheritDoc} */
 	@Override
 	protected String getBaseUrl(int appId) {
 		String baseUrl = super.getBaseUrl(appId);
 		baseUrl += "/" + METHOD_NAME;
 		baseUrl += "/" + API_VERSION_ONE;
 		baseUrl += "/";
-		
+
 		return baseUrl;
 	}
 	

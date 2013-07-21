@@ -1,4 +1,4 @@
-package nl.ansuz.android.steam.dota.response;
+package nl.ansuz.android.steam.dota.response.economy;
 
 import com.google.gson.annotations.SerializedName;
 import nl.ansuz.android.steam.dota.vo.RarityVO;

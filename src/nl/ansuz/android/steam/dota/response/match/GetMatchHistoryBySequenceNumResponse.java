@@ -1,6 +1,7 @@
-package nl.ansuz.android.steam.dota.response;
+package nl.ansuz.android.steam.dota.response.match;
 
 import com.google.gson.annotations.SerializedName;
+import nl.ansuz.android.steam.dota.response.DotaResponse;
 
 /**
  * Response object for the GetMatchHistoryBySequenceNum request.

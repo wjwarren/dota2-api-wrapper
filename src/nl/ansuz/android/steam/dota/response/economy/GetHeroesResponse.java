@@ -1,4 +1,4 @@
-package nl.ansuz.android.steam.dota.response;
+package nl.ansuz.android.steam.dota.response.economy;
 
 import nl.ansuz.android.steam.dota.vo.HeroVO;
 

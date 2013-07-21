@@ -1,5 +1,6 @@
-package nl.ansuz.android.steam.dota.request;
+package nl.ansuz.android.steam.dota.request.match;
 
+import nl.ansuz.android.steam.dota.request.DotaRequest;
 import nl.ansuz.android.steam.request.ISteamRequest;
 
 /**
