@@ -10,10 +10,11 @@ import com.google.gson.annotations.SerializedName;
 public class DotaResponse {
 
 	/**
-	 * 1 - Success
+	 * 1 - Success<br/>
 	 * 
-	 * 8 - 'matches_requested' must be greater than 0. OR
-	 * 8 - 'teams_requested' must be greater than 0.
+	 * 8 - 'matches_requested' must be greater than 0. OR<br/>
+	 * 8 - 'teams_requested' must be greater than 0. OR<br/>
+	 * 8 - Only supports tournament 65006 (The International). (For {@link GetTournamentPlayerStats}.)<br/>
 	 * 
 	 * 15 - Cannot get match history for a user that hasn't allowed it.
 	 */
