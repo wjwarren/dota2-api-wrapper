@@ -21,7 +21,7 @@ public class GetTournamentPlayerStatsResponse extends DotaResponse {
 	 * (Object structure not yet known.)
 	 */
 	@SerializedName("matches")
-	public String matches;
+	public String[] matches;
 
 	/**
 	 * Total wins.
@@ -114,6 +114,6 @@ public class GetTournamentPlayerStatsResponse extends DotaResponse {
 	 * (Object structure not yet known.)
 	 */
 	@SerializedName("heroes_played")
-	public String heroesPlayed;
+	public String[] heroesPlayed;
 
 }

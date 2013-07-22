@@ -4,7 +4,14 @@ import nl.ansuz.android.steam.dota.request.DotaRequest;
 import nl.ansuz.android.steam.request.ISteamRequest;
 
 /**
- * Helps constructing the url to get stats about a particular player within a tournament.
+ * Helps constructing the url to get stats about a particular player within a tournament.<br/>
+ *<br/>
+ * NOTE: When the API responds with:<br/>
+ *		"status": 8,<br/>
+ *		"statusDetail": "only supports tournament 65006"<br/>
+ *<br/>
+ * Try adding {@link Parameter#LEAGUE_ID} with value "65006" to the parameter {@link java.util.Map} when you call<br/>
+ * {@link #createRequestUrl(int, java.util.Map)}.
  *
  * @see http://wiki.teamfortress.com/wiki/WebAPI/GetTournamentPlayerStats
  * @author Wijnand
