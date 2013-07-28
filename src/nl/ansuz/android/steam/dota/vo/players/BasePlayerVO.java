@@ -10,7 +10,8 @@ import com.google.gson.annotations.SerializedName;
 public class BasePlayerVO {
 
 	/**
-	 * 32 bit Steam account number.
+	 * 32 bit Steam account number.<br/>
+	 * NOTE: This will be set to -1 for users who don't share their DotA 2 history!
 	 */
 	@SerializedName("account_id")
 	public int accountId;
@@ -20,5 +21,11 @@ public class BasePlayerVO {
 	 */
 	@SerializedName("hero_id")
 	public int heroId;
-	
+
+	/**
+	 * @return boolean - Whether or not this is an anonymous player.
+	 */
+	public boolean isAnonymous() {
+		return accountId < 0;
+	}
 }

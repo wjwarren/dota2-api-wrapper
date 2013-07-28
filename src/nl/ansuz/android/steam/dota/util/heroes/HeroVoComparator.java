@@ -5,7 +5,7 @@ import nl.ansuz.android.steam.dota.vo.HeroVO;
 import java.util.Comparator;
 
 /**
- * Comparator to sort a {@link HeroVO} Array by {@link HeroVO#id}.
+ * Comparator to sort a {@link HeroVO} Array by {@link HeroVO#id} ascending.
  *
  * @author Wijnand
  */
