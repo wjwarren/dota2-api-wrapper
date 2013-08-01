@@ -112,7 +112,7 @@ public class GetMatchDetailsResponse {
 	 * Numeric match ID.
 	 */
 	@SerializedName("match_id")
-	public int matchId;
+	public long matchId;
 	
 	/**
 	 * A "sequence number", representing the order in which matches were recorded.
