@@ -165,6 +165,14 @@ public class PlayerVO extends BasePlayerVO {
 	public boolean isRadiant() {
 		return playerSlot < 5;
 	}
+
+	/**
+	 * @param radiantWin boolean - Whether or not radiant won.
+	 * @return boolean - Whether or not the player was on the winning side.
+	 */
+	public boolean hasWon(boolean radiantWin) {
+		return isRadiant() ? radiantWin : !radiantWin;
+	}
 	
 	/**
 	 * @return The player's KDR.
