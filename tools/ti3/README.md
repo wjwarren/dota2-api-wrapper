@@ -22,3 +22,4 @@ The JSON structure is roughly the following:
 
 ##Main Event
 * [Day 01](main_event_day_01.json)
+* [Day 02](main_event_day_02.json)
