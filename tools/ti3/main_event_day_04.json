@@ -1,0 +1,21 @@
+{ "date": "Saturday 10 08 2013",
+"name": "Main event day 04",
+
+"series": [ 
+	{ "name": "Lower Bracket Round 4A",
+	"b": 269739993 ,
+	"c": 269777362 },
+
+	{ "name": "Lower Bracket Round 4B",
+	"b": 269828278,
+	"c": 269879845 },
+
+	{ "name": "Upper Bracket Round 3A",
+	"a": 269910097,
+	"b": 269927795 },
+
+	{ "name": "Lower Bracket Round 5A",
+	"a": 269952489,
+	"b": 269981681,
+	"c": 270016993 } ]
+}
