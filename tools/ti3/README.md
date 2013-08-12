@@ -25,3 +25,4 @@ The JSON structure is roughly the following:
 * [Day 02](main_event_day_02.json)
 * [Day 03](main_event_day_03.json)
 * [Day 04](main_event_day_04.json)
+* [Day 05](main_event_day_05.json)

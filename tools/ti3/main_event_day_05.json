@@ -1,0 +1,16 @@
+{ "date": "Saturday 11 08 2013",
+"name": "Main event day 05",
+
+"series": [ 
+	{ "name": "Lower Bracket Round 6A",
+	"a": 270942504 ,
+	"b": 270979841 ,
+	"c": 271008789 },
+
+	{ "name": "Grand Championship",
+	"a": 271076032,
+	"b": 271088718,
+	"c": 271102834,
+	"d": 271123757,
+	"e": 271145478 } ]
+}
