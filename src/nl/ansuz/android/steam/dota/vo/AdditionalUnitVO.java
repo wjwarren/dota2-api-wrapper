@@ -13,7 +13,7 @@ public class AdditionalUnitVO {
 	 * The name of the unit.
 	 */
 	@SerializedName("unitname")
-	public int unitName;
+	public String unitName;
 
 	/**
 	 * Numeric item ID for the top-left slot.
