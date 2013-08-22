@@ -24,10 +24,14 @@ String url = matchDetailsRequest.createRequestUrl(DotaRequest.ApplicationID.BETA
 
 Parsing the response:
 ```java
+// Resonse String from the API.
+String apiResponse;
+
 GsonUtil util = new GsonUtil();
 Gson gson = new Gson();
 
-GetMatchDetailsResponse matchDetailsResponse = gson.fromJson(util.getStrippedResult(matchDetailsResponse), GetMatchDetailsResponse.class);
+GetMatchDetailsResponse matchDetailsResponse = gson.fromJson(util.getStrippedDotaResult(apiResponse),
+		GetMatchDetailsResponse.class);
 ```
 
 ###Generating HeroBuildItemList.java
