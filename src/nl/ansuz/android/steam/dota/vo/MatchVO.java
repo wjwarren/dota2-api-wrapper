@@ -28,7 +28,7 @@ public class MatchVO {
 	public int startTime;
 
 	/**
-	 * @see GetMatchDetailsResponse.LobbyType
+	 * @see GetMatchDetailsResponse#LobbyType
 	 */
 	@SerializedName("lobby_type")
 	public int lobbyType;

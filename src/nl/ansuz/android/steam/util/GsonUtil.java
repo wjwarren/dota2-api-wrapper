@@ -19,14 +19,14 @@ public class GsonUtil {
 	 * 	response.
 	 */
 	protected JsonElement getStrippedResult(String json, String elementName) {
-		Gson gson = new Gson();	
+		Gson gson = new Gson();
 		JsonElement rawMatchHistoryResponse = gson.fromJson(json, JsonElement.class);
 		JsonElement result = rawMatchHistoryResponse.getAsJsonObject().get(elementName);
 		gson = null;
 		
 		return result;
 	}
-	
+
 	/**
 	 * Strips the "result" Object that surrounds all Dota Steam API JSON 
 	 * responses.
@@ -37,7 +37,7 @@ public class GsonUtil {
 	public JsonElement getStrippedDotaResult(String json) {
 		return getStrippedResult(json, "result");
 	}
-	
+
 	/**
 	 * Strips the "response" Object that surrounds all generic Steam API JSON 
 	 * responses.
@@ -48,5 +48,5 @@ public class GsonUtil {
 	public JsonElement getStrippedSteamResult(String json) {
 		return getStrippedResult(json, "response");
 	}
-	
+
 }
