@@ -12,6 +12,51 @@ import com.google.gson.annotations.SerializedName;
 public class PlayerVO extends BasePlayerVO {
 
 	/**
+	 * Player leave status.
+	 *
+	 * @author Wijnand
+	 */
+	public enum LeaverStatus {
+		/**
+		 * Didn't leave the game.
+		 */
+		NONE,
+		/**
+		 * Disconnected from the game.
+		 */
+		DISCONNECTED,
+		/**
+		 * Disconnected, left for longer than 5 minutes and is counted as abandoned.
+		 */
+		DISCONNECTED_TOO_LONG,
+		/**
+		 * Disconnected and manually clicked on "leave game", counted as abandon.
+		 */
+		ABANDONED,
+		/**
+		 * AFK.
+		 */
+		AWAY_FROM_KEYBOARD,
+		/**
+		 * Never connected.
+		 */
+		NEVER_CONNECTED,
+		/**
+		 * Never connected, game went on for some time and is counted as abandon.
+		 */
+		NEVER_CONNECTED_TOO_LONG;
+
+		private static final LeaverStatus[] leaverStatus = LeaverStatus.values();
+
+		public static LeaverStatus fromInteger(int i) {
+			if(i < 0 || i > leaverStatus.length - 1) {
+				i = 0;
+			}
+			return leaverStatus[i];
+		}
+	}
+
+	/**
 	 * An 8-bit unsigned int: if the left-most bit is set, the player was on dire. 
 	 * The two right-most bits represent the player slot (0-4).
 	 * 
@@ -82,7 +127,7 @@ public class PlayerVO extends BasePlayerVO {
 	public int assists;
 	
 	/**
-	 * 0 if the player stayed in the match.
+	 * @see LeaverStatus
 	 */
 	@SerializedName("leaver_status")
 	public int leaverStatus;
