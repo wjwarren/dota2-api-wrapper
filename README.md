@@ -37,7 +37,7 @@ GetMatchDetailsResponse matchDetailsResponse = gson.fromJson(util.getStrippedDot
 ###Generating HeroBuildItemList.java
 If you have Python installed you can generate the `src/nl/ansuz/android/steam/dota/util/HeroBuildItemList.java` file by running the BuildItemsParser Python script found in `tools/itemparser`.
 
-First extract `scripts/npc/items.txt` from `<path to steam>/Steam/steamapps/common/dota 2 beta/dota/pak01_dir.vpk` using [GCFScape](http://nemesis.thewavelength.net/index.php?p=26).
+First extract `scripts/npc/items.txt` from `<path to steam>/Steam/steamapps/common/dota 2 beta/dota/pak01_dir.vpk` using [GCFScape](http://nemesis.thewavelength.net/index.php?p=26) or [VPKReader](https://github.com/hufuman/VPKReader) if GCFScape doesn't work.
 
 After this, tweak `tools/itemparser/BuildItemsParser.cfg` to meet your needs.
 
