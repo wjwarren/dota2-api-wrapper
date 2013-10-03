@@ -11,9 +11,10 @@ public class HeroVO {
 
 	public static final String IMAGE_URL_PREFIX = "http://media.steampowered.com/apps/dota2/images/heroes/";
 
-	public static final String FULL_IMAGE_URL_SUFFIX = "_full.png";
-	public static final String LARGE_IMAGE_URL_SUFFIX = "_lg.png";
+	public static final String TINY_IMAGE_URL_SUFFIX = "_eg.png";
 	public static final String SMALL_IMAGE_URL_SUFFIX = "_sb.png";
+	public static final String LARGE_IMAGE_URL_SUFFIX = "_lg.png";
+	public static final String FULL_IMAGE_URL_SUFFIX = "_full.png";
 	public static final String PORTRAIT_IMAGE_URL_SUFFIX = "_vert.jpg";
 
 	public static final String HERO_NAME_PREFIX = "npc_dota_hero_";
@@ -58,9 +59,16 @@ public class HeroVO {
 	public String getSmallImageUrl() {
 		return getImageUrl(SMALL_IMAGE_URL_SUFFIX);
 	}
-	
+
 	/**
-	 * @return The URL for the portait Hero icon (235x272 px).
+	 * @return The URL for the tiny Hero icon (35x20 px).
+	 */
+	public String getTinyImageUrl() {
+		return getImageUrl(TINY_IMAGE_URL_SUFFIX);
+	}
+
+	/**
+	 * @return The URL for the portrait Hero icon (235x272 px).
 	 */
 	public String getPortaitImageUrl() {
 		return getImageUrl(PORTRAIT_IMAGE_URL_SUFFIX);
