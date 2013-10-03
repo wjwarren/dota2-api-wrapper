@@ -48,11 +48,11 @@ public class GetMatchDetailsResponse {
 	 */
 	public enum GameMode {
 		UNKNOWN,
-		ALL_PICK, // 1 - verified
+		ALL_PICK,
 		CAPTAINS_MODE,
-		RANDOM_DRAFT, // 3 - verified
-		SINGLE_DRAFT, // 4 - verified
-		ALL_RANDOM, // 5 - verified
+		RANDOM_DRAFT,
+		SINGLE_DRAFT,
+		ALL_RANDOM,
 		INTRO,
 		DIRETIDE, // = Halloween
 		REVERSE_CAPTAINS_MODE,
@@ -61,7 +61,8 @@ public class GetMatchDetailsResponse {
 		MID_ONLY,
 		LEAST_PLAYED,
 		NEW_PLAYER_POOL, 
-		COMPENDIUM;
+		COMPENDIUM,
+		CAPTAINS_DRAFT;
 
 		private static final GameMode[] gameModeValues = GameMode.values();
 
