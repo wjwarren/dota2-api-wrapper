@@ -1,29 +1,42 @@
 task wrapper(type: Wrapper) {
-    gradleVersion = "1.4"
+	gradleVersion = "1.8"
 }
 
-apply plugin: "java"
-apply plugin: "maven"
+apply plugin: "android-library"
 
-group = "nl.ansuz"
-version = "0.1"
-sourceCompatibility = 1.6
-jar {
-    manifest {
-        attributes "Implementation-Title": "Dota 2 API Wrapper for Android", "Implementation-Version": version
-    }
+buildscript {
+	repositories {
+		mavenCentral()
+	}
+
+	dependencies {
+		// Android Gradle plugin.
+		classpath 'com.android.tools.build:gradle:0.6.1'
+	}
 }
 
-sourceSets {
-	main {
-		java {
-			srcDir "src"
+android {
+	compileSdkVersion 18
+	buildToolsVersion "18.0.1"
+
+	defaultConfig {
+		minSdkVersion = 8
+		targetSdkVersion = 18
+
+		versionCode = "1"
+		versionName = "0.1"
+	}
+
+	sourceSets {
+		main {
+			manifest.srcFile "AndroidManifest.xml"
+			java.srcDirs = ["src"]
+			res.srcDirs = ["res"]
 		}
 	}
 }
 
 repositories {
-	mavenLocal()
 	mavenCentral()
 }
 
