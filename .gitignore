@@ -14,6 +14,7 @@ project.properties
 
 # IntelliJ
 *.iml
+.idea/
 
 # DotA2 files
 tools/itemparser/items.txt
